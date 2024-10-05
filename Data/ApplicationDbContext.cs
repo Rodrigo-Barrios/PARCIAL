@@ -11,6 +11,7 @@ public class ApplicationDbContext : IdentityDbContext
     }
 
     public DbSet<PARCIAL.Models.Remesa> DataRemesa { get; set; }
+    public DbSet<PARCIAL.Models.ListadoRemesas> DataListadoRemesas { get; set; }
 
 
 
