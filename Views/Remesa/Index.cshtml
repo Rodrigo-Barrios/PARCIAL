@@ -1,0 +1,54 @@
+@model PARCIAL.ViewModel.RemesaViewModel
+<h2 class="mb-4 text-center">Registro de remesa</h2>
+
+<form asp-action="Registrar" method="post">
+    <div class="form-group">
+        <label for="NombreRemitente">Nombre del Remitente</label>
+        <input asp-for="FormRemesa.NombreRemitente" class="form-control" id="NombreRemitente" required />
+    </div>
+    <div class="form-group">
+        <label for="NombreDestinatario">Nombre del Destinatario</label>
+        <input asp-for="FormRemesa.NombreDestinatario" class="form-control" id="NombreDestinatario" required />
+    </div>
+    <div class="form-group">
+        <label for="PaisOrigen">País de Origen</label>
+        <input asp-for="FormRemesa.PaisOrigen" class="form-control" id="PaisOrigen" required />
+    </div>
+    <div class="form-group">
+        <label for="PaisDestino">País de Destino</label>
+        <input asp-for="FormRemesa.PaisDestino" class="form-control" id="PaisDestino" required />
+    </div>
+    <div class="form-group">
+        <label for="MontoEnviado">Monto Enviado</label>
+        <div class="input-group">
+            <input asp-for="FormRemesa.MontoEnviado" class="form-control" id="MontoEnviado" required />
+            <div class="input-group-append">
+                <select class="custom-select" id="currencySelect" onchange="updateCurrency()">
+                    <option value="USD">USD</option>
+                    <option value="BTC">BTC</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="TasaCambio">Tasa de Cambio</label>
+        <input asp-for="FormRemesa.TasaCambio" class="form-control" id="TasaCambio" required />
+    </div>
+    <div class="form-group">
+        <label for="MontoFinal">Monto Final</label>
+        <input asp-for="FormRemesa.MontoFinal" class="form-control" id="MontoFinal" required />
+    </div>
+    <div class="form-group">
+        <label for="EstadoTransaccion">Estado de la Transacción</label>
+        <input asp-for="FormRemesa.EstadoTransaccion" class="form-control" id="EstadoTransaccion" required />
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+</form>
+
+<script>
+    function updateCurrency() {
+        const currencySelect = document.getElementById('currencySelect');
+        const montoEnviadoInput = document.getElementById('MontoEnviado');
+        montoEnviadoInput.setAttribute('placeholder', 'Ingrese monto en ' + currencySelect.value);
+    }
+</script>
