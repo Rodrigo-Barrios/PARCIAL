@@ -1,0 +1,45 @@
+@model PARCIAL.ViewModel.RemesaViewModel
+@{
+    ViewData["Title"] = "Lista de remesas";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">@ViewData["Title"]</h1>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th>Remitente</th>
+                    <th>Destinatario</th>
+                    <th>País Origen</th>
+                    <th>País Destino</th>
+                    <th>Monto Enviado</th>
+                    <th>Tasa Cambio</th>
+                    <th>Monto Final</th>
+                    <th>Estado de transaccion</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var remesa in Model.ListRemesa)
+                {
+                    <tr>
+                        <td>@remesa.NombreRemitente</td>
+                        <td>@remesa.NombreDestinatario</td>
+                        <td>@remesa.PaisOrigen</td>
+                        <td>@remesa.PaisDestino</td>
+                        <td>@remesa.MontoEnviado</td>
+                        <td>@remesa.TasaCambio</td>
+                        <td>@remesa.MontoFinal</td>
+                        <td>
+                            <span
+                                class="badge @(remesa.EstadoTransaccion == "Completo" ? "badge-success" : "badge-warning")">
+                                @remesa.EstadoTransaccion
+                            </span>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
